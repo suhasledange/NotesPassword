@@ -12,7 +12,6 @@
     $password = $_POST['password'];
     
 
-
     $s = "select * from registration where email='$email' && password='$password'";
     $res = mysqli_query($con,$s);
     $num = mysqli_num_rows($res);

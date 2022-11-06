@@ -19,11 +19,10 @@ nav .container .last{
     width: 80%;
     padding: 4rem;
     position: relative;
-    overflow:hidden;
+    
 }
 table{
     padding: 1rem;
-    /* background: red; */
     width: 100%;
 }
 .title{
@@ -34,9 +33,7 @@ table tr th,td{
     padding: 1rem 2rem;
     border: 1px solid white;
     max-width: 52rem;
-    text-overflow:ellipsis;
-    white-space: nowrap;
-    
+    word-wrap: break-word;   
 }
 .options{
     display: flex;
