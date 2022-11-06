@@ -104,13 +104,13 @@ function checkset(){
     }
   }) 
 
-
 }
 
 //note close open
 
 let add = document.querySelector(".addnote");
 let addopen = document.querySelector(".form-con");
+
 add.addEventListener("click",()=>{
   addopen.classList.toggle("form-con-show");
 })
@@ -121,3 +121,17 @@ closeAdd.addEventListener("click",()=>{
   addopen.classList.remove("form-con-show");
 })
   
+
+
+let delet = document.querySelector(".deletenote");
+let deletopen = document.querySelector(".form-con1");
+
+delet.addEventListener("click",()=>{
+  deletopen.classList.toggle("form-con1-show");
+})
+
+let closedel = document.querySelector(".cross1");
+
+closedel.addEventListener("click",()=>{
+  deletopen.classList.remove("form-con1-show");
+})

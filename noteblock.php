@@ -1,6 +1,16 @@
 <?php
 
     session_start();
+    $con = mysqli_connect('localhost','root','');
+    mysqli_select_db($con,'Notes');
+
+    $first = implode($_SESSION['first']);
+    $last = implode($_SESSION['last']);
+
+    $query = "select * from $first$last";
+    $result = mysqli_query($con,$query);
+
+
 
 ?>
 <html lang="en">
@@ -192,7 +202,9 @@
                             <a href="" class="accn">Manage Your Account</a>
                         </div>
                         <div class="add-accn">
-                            <i class="add-icon uil uil-user-plus"></i> <a href="">Add another account</a>
+                             <a href="noteblock.php">Notes</a>
+                             <h1>|</h1>
+                             <a href="passblock.php">Passwords</a>
                         </div>
                         <div class="sign-out">
                             <a href="logout.php">Sign out</a>
@@ -213,21 +225,33 @@
     <section class="container_data">
         
         <div class="data">
-            <div class="addnote">
-                <i class="uil uil-plus"></i>
-                <h1>Add Note</h1>
+            <div class="options">
+
+                <div class="addnote">
+                    <i class="uil uil-plus"></i>
+                    <h1>Add Note</h1>
+                </div>
+                <div class="deletenote">
+                    <i class="uil uil-minus"></i>
+                    <h1>Delete Note</h1>
+                </div>
             </div>
             <table>
                 <tr>
-                    <th>SrNo</th>
-                    <th>Title</th>
+                    <th class="title">Title</th>
                     <th>Note </th>
                 </tr>
+                <?php
+                while($rows=mysqli_fetch_assoc($result)){
+                ?>    
                 <tr>
-                    <td>1</td>
-                    <td>cpp</td>
-                    <td>cpp is ssdfasdfasdfsadfsadfasdfsadfasdfsadfsdafsadfsadfsadfsadfsadfsadfasdfsadfasdfasdfasdfasdfsadfasdfasdfasdfasdfasdfasdfasdfasdfasdfsadfsadf</td>
+                
+                    <td class="title"> <?php echo  $rows['title'] ?> </td>
+                    <td> <?php echo $rows['note'] ?> </td>
                 </tr>
+             <?php   
+            }
+            ?>
             </table>
         </div>
         <div class="form-con">
@@ -238,8 +262,15 @@
                 <input class="btn" type="submit" >                
             </form>
         </div>
+        <div class="form-con1">
+            <i class="cross1 uil uil-times"></i>
+            <form action="deletenote.php" method="post">
+                <input type="text" name="title" placeholder="Enter Title To Delete" required>
+                <button class="btn" type="submit" placeholder="Delete">Delete</button>                
+            </form>
+        </div>
     </section>
-
+ 
     
         <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
         <script src="script.js"></script>

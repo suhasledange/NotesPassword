@@ -1,9 +1,18 @@
 <?php
 
     session_start();
+    $con = mysqli_connect('localhost','root','');
+    mysqli_select_db($con,'Passwords');
+
+    $first = implode($_SESSION['first']);
+    $last = implode($_SESSION['last']);
+
+    $query = "select * from $first$last";
+    $result = mysqli_query($con,$query);
+
+
 
 ?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,11 +29,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="manager.css">
+<link rel="stylesheet" href="noteblock.css">
+<link rel="stylesheet" href="passblock.css">
+
     
 </head>
-<body>
-    
-     
+<body> 
     <nav>
         <div class="menu-icon" >
             <i class="uil uil-bars" onclick="settingToggle()"></i>
@@ -174,12 +184,13 @@
 
                     </li>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="login.php">Log In</a></li>
-                    <li><a href="signup.php">Sign Up</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
                 </ul>
             </div>
+
+
             <div class="last">
-        
                 <div class="profile-logo" >
                     <img src="profile-small.png" onclick="togfun()" alt="">
                 </div>
@@ -188,7 +199,7 @@
                             <div class="pro-img">
                                 <img src="profile-small.png" alt="">
                             </div>
-                            <h1><?php echo implode($_SESSION['first']) ?> <?php echo implode($_SESSION['last']) ?> </h1>
+                            <h1><?php echo implode($_SESSION['first']) ?> <?php echo implode($_SESSION['last']) ?>  </h1>
                             <span><?php echo implode($_SESSION['email']) ?> </span>
                             <a href="" class="accn">Manage Your Account</a>
                         </div>
@@ -199,7 +210,7 @@
                         </div>
                         <div class="sign-out">
                             <a href="logout.php">Sign out</a>
-                        </div>
+                        </div> 
                         <div class="policy">
                             <a href="">Privacy Policy</a>
                             <span><i class="uil uil-bright"></i></span>
@@ -207,28 +218,60 @@
                         </div> 
                 </div>
             </div>
+
+
+
         </div>
     </nav>
 
+    <section class="container_data">
+        
+        <div class="data">
+            <div class="options">
 
-    <section class="manager-contain">
-        <div class="manage-container snake-border">
-
-            <div class="left-manager animl">
-                <div class="head-manage">
-                    <h1>Secure Your Notes<span>|</span>Password For Free</h1>
-                    <p>Store Your Notes and Password Without any Hesitation</p>
-                </div>     
-                <div class="btn-manage">
-                    <a href="noteblock.php" class="btnn btn-man">Notes</a>
-                    <a href="passblock.php" class="btnn btn-man">Password</a>
+                <div class="addnote">
+                    <i class="uil uil-plus"></i>
+                    <h1>Add Password</h1>
+                </div>
+                <div class="deletenote">
+                    <i class="uil uil-minus"></i>
+                    <h1>Delete Password</h1>
                 </div>
             </div>
-            <div class="right-manager animr">
-                <img src="store.png" alt="">
-            </div>
+            <table>
+                <tr>
+                    <th class="title">Title</th>
+                    <th>Password</th>
+                </tr>
+                <?php
+                while($rows=mysqli_fetch_assoc($result)){
+                ?>    
+                <tr>
+                
+                    <td class="title"> <?php echo  $rows['title'] ?> </td>
+                    <td> <?php echo $rows['pass'] ?> </td>
+                </tr>
+             <?php   
+            }
+            ?>
+            </table>
         </div>
-        </section>
+        <div class="form-con">
+            <i class="cross uil uil-times"></i>
+            <form action="addpass.php" method="post">
+                <input type="text" name="title" placeholder="Enter Title" required>
+                <textarea name="pass" cols="10" rows="10" placeholder="Enter Password" required></textarea>
+                <input class="btn" type="submit" >                
+            </form>
+        </div>
+        <div class="form-con1">
+            <i class="cross1 uil uil-times"></i>
+            <form action="deletepass.php" method="post">
+                <input type="text" name="title" placeholder="Enter Title To Delete" required>
+                <button class="btn" type="submit" placeholder="Delete">Delete</button>                
+            </form>
+        </div>
+    </section>
 
     
         <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>

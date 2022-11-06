@@ -25,10 +25,14 @@
             mysqli_query($con,$reg);
             
             mysqli_select_db($con,'Notes');
-            
             $qe = "CREATE TABLE $first$last(title VARCHAR(225) NOT NULL , note VARCHAR(255) NOT NULL , PRIMARY KEY (title))";
             mysqli_query($con,$qe);
-        header('location:login.php');
+
+            mysqli_select_db($con,'Passwords');
+            $qe = "CREATE TABLE $first$last(title VARCHAR(225) NOT NULL , pass VARCHAR(255) NOT NULL , PRIMARY KEY (title))";
+            mysqli_query($con,$qe);
+            
+            header('location:login.php');
 
         }
 

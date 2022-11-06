@@ -81,6 +81,10 @@
 }
 
 .add-accn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     margin-top: 2rem;
     padding: 0.5rem;
     border-top: 1px solid var(--color-bg3);
@@ -99,6 +103,9 @@
 .add-accn a{
     font-size: 1rem;
     margin: 0rem 0.4rem;
+}
+.add-accn a:hover{
+    text-decoration: underline;
 }
 .sign-out{
     align-items: center;

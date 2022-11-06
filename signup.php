@@ -179,7 +179,7 @@
 
     <section class="contents">
         <div class="log-container snake-border">
-            <div class="left animl">
+            <div class="left">
                     <img src="signup.png" alt="">
                     <div class="title">
                         <h1>Notes</h1> <h2>|</h2> <h1>Password</h1> <span>Manager</span>
