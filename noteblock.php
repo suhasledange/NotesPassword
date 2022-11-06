@@ -250,11 +250,6 @@
              <?php   
             }
             ?>
-            <tr>
-                <td class="title">cpp</th>
-                <td>sdfasdfjaslkdfjklsjdfljsalkdjfljsadfjlsajdkfjsalkdjflkjsaldfjlsadjfkjaslkdjflkasjdfjlsakdjflsldkjflksajdkfjsalkdfjlksajdflkjsdlkfjlskdjflksjdlfjlskdjfsdfsdfsdfsdfsdfsdfsddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</td>
-</th>
-            </tr>
             </table>
         </div>
         <div class="form-con">
