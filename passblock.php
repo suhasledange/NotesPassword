@@ -30,7 +30,6 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="manager.css">
 <link rel="stylesheet" href="noteblock.css">
-<link rel="stylesheet" href="passblock.css">
 
     
 </head>
@@ -226,7 +225,7 @@
 
     <section class="container_data">
         
-        <div class="data">
+        <div class="data snake-border">
             <div class="options">
 
                 <div class="addnote">

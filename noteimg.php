@@ -2,12 +2,12 @@
 
     session_start();
     $con = mysqli_connect('localhost','root','');
-    mysqli_select_db($con,'Notes');
+    mysqli_select_db($con,'noteimg');
 
     $first = implode($_SESSION['first']);
     $last = implode($_SESSION['last']);
 
-    $query = "select * from $first$last";
+    $query = "select * from imgnote";
     $result = mysqli_query($con,$query);
 
 ?>
@@ -233,16 +233,13 @@
                     <i class="uil uil-minus"></i>
                     <h1>Delete Note</h1>
                 </div>
-                <a href="noteimg.php">
+                <a href="noteblock.php">
                     <div class="deletenote">
                         <i class="uil uil-image-plus"></i>
-                        <h1>Images Block</h1>
+                        <h1>Notes Block</h1>
                     </div>
                 </a>
             </div>
-
-
-
             <table>
                 <tr>
                     <th class="title">Title</th>
@@ -255,12 +252,13 @@
                     <td class="title"> <?php echo  $rows['title'] ?> </td>
                     <td class="note_cl"> 
                         <div class="note_div">
-                            <?php echo $rows['note'] ?> 
+                            <img class="img_note" src="upload/<?php echo $rows['img']?>">
+                            <?php echo $rows['img'] ?> 
                         </div>
                         <?php 
                             $title = $rows['title'];
                         echo '
-
+                        
                         <div class="ope">
                         <a class="btn uptit_btn" href="upnote.php?uptitle='.$title.'">Update</a>
                         <a class="btn del_btn" href="delnote.php?deltitle='.$title.'">Delete</a>
@@ -273,21 +271,18 @@
             }
             ?>
             </table>
-             
-
-
         </div>
         <div class="form-con">
             <i class="cross uil uil-times"></i>
-            <form action="addnote.php" method="post">
+            <form action="addimg.php" method="post" enctype="multipart/form-data">
                 <input type="text" name="title" placeholder="Enter Note Title" required>
-                <textarea name="note" cols="30" rows="10" placeholder="Enter Note" required></textarea>
-                <input class="btn" type="submit" >                
+                <input class="choosefile" type="file" name="my_img">
+                <input class="btn" type="submit" name="submit" value="Upload">                
             </form>
         </div>
         <div class="form-con1">
             <i class="cross1 uil uil-times"></i>
-            <form action="deletenote.php" method="post">
+            <form action="delimg.php" method="post">
                 <input type="text" name="title" placeholder="Enter Title To Delete" required>
                 <button class="btn" type="submit" placeholder="Delete">Delete</button>                
             </form>
