@@ -49,22 +49,18 @@ table tr th,td{
     gap: 1rem;
     align-items: center;
 }
-.ope .btn{
+.btn{
     padding: 0.5rem;
     font-size: 0.9rem;
-    background: var(--color-bg2);
-    color: var(--color-bg1);
+    color: var(--color-white);
     border: 1px solid var(--color-white);
-}
-.ope .btn:nth-child(1):hover{
-    color: var(--color-white);
     background: transparent;
 }
-.ope .btn:nth-child(2){
-    color: var(--color-white);
-    background: transparent;
+.uptit_btn{
+    color: var(--color-bg1);
+    background: var(--color-bg2);
 }
-.ope .btn:nth-child(2):hover{
+.del_btn:hover{
     background: var(--color-danger);
 }
 .options{

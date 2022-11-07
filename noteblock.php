@@ -253,7 +253,7 @@
                         echo '
                         <div class="ope">
                         <a class="btn uptit_btn" href="upnote.php?uptitle='.$title.'">Update</a>
-                        <a class="btn" href="delnote.php?deltitle='.$title.'">Delete</a>
+                        <a class="btn del_btn" href="delnote.php?deltitle='.$title.'">Delete</a>
                         </div>
                         '
                         ?>
