@@ -32,8 +32,40 @@ table{
 table tr th,td{
     padding: 1rem 2rem;
     border: 1px solid white;
-    max-width: 52rem;
+    max-width: 45rem;
     word-wrap: break-word;   
+}
+.note_div{
+    word-wrap: break-word;
+    max-width: 73%;
+}
+.note_cl{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+.ope{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.ope .btn{
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    background: var(--color-bg2);
+    color: var(--color-bg1);
+    border: 1px solid var(--color-white);
+}
+.ope .btn:nth-child(1):hover{
+    color: var(--color-white);
+    background: transparent;
+}
+.ope .btn:nth-child(2){
+    color: var(--color-white);
+    background: transparent;
+}
+.ope .btn:nth-child(2):hover{
+    background: var(--color-danger);
 }
 .options{
     display: flex;

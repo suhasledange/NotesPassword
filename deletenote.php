@@ -14,7 +14,7 @@
     
     $reg = "delete from $first$last where title='$title'";
     mysqli_query($con,$reg);    
-        
+    
     header('location:noteblock.php');
 
 ?>

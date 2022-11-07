@@ -135,3 +135,9 @@ let closedel = document.querySelector(".cross1");
 closedel.addEventListener("click",()=>{
   deletopen.classList.remove("form-con1-show");
 })
+
+let form_up = document.querySelector(".form-up");
+let form_btn = document.querySelector(".form-cross");
+form_btn.addEventListener("click",()=>{
+  form_up.classList.remove("form-up");
+})

@@ -237,15 +237,27 @@
             <table>
                 <tr>
                     <th class="title">Title</th>
-                    <th>Note </th>
+                    <th colspan="2">Note</th>
                 </tr>
                 <?php
                 while($rows=mysqli_fetch_assoc($result)){
                 ?>    
                 <tr>
-                
                     <td class="title"> <?php echo  $rows['title'] ?> </td>
-                    <td> <?php echo $rows['note'] ?> </td>
+                    <td class="note_cl"> 
+                        <div class="note_div">
+                            <?php echo $rows['note'] ?> 
+                        </div>
+                        <?php 
+                            $title = $rows['title'];
+                        echo '
+                        <div class="ope">
+                        <a class="btn uptit_btn" href="upnote.php?uptitle='.$title.'">Update</a>
+                        <a class="btn" href="delnote.php?deltitle='.$title.'">Delete</a>
+                        </div>
+                        '
+                        ?>
+                    </td>
                 </tr>
              <?php   
             }
