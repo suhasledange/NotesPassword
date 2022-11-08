@@ -3,7 +3,7 @@
 
 session_start();
 $con = mysqli_connect('localhost','root','');
-mysqli_select_db($con,'Notes');
+mysqli_select_db($con,'passwords');
 
 $first = implode($_SESSION['first']);
 $last = implode($_SESSION['last']);
@@ -255,7 +255,7 @@ $result = mysqli_query($con,$query);
                 <td class="title"> <?php echo  $rows['title'] ?> </td>
                 <td class="note_cl"> 
                     <div class="note_div">
-                        <?php echo $rows['note'] ?> 
+                        <?php echo $rows['pass'] ?> 
                     </div>
                     <?php 
                         $title = $rows['title'];
@@ -296,13 +296,13 @@ $result = mysqli_query($con,$query);
         </form>
     </div>
     <div class="form_up" >
-        <a href="noteblock.php">
+        <a href="passblock.php">
             <i class="cross uil uil-times"></i>
         </a>
-        <form action="upnote.php" method="post">
+        <form action="uppass.php" method="post">
             <input style="display:none;" type="text" name="prev" value="<?php echo $uptit ?>">
             <input type="text" name="title" placeholder="Enter Note Title" value="<?php echo $arr['title']?>">
-            <textarea name="note" cols="30" rows="10" placeholder="Enter Note" ><?php echo $arr['note']?></textarea>
+            <textarea name="pass" cols="30" rows="10" placeholder="Enter Note" ><?php echo $arr['pass']?></textarea>
             <input class="btn" type="submit" >                
         </form>
     </div>

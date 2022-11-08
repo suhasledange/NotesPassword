@@ -6,7 +6,7 @@
 
     mysqli_select_db($con,'noteimg');
 
-    $title = $_POST['title'];
+    $title = $_GET['deltitle'];
     
     $first = implode($_SESSION['first']);
     $last = implode($_SESSION['last']);
@@ -16,5 +16,4 @@
     mysqli_query($con,$reg);    
     
     header('location:noteimg.php');
-
 ?>

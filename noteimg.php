@@ -252,16 +252,21 @@
                     <td class="title"> <?php echo  $rows['title'] ?> </td>
                     <td class="note_cl"> 
                         <div class="note_div">
-                            <img class="img_note" src="upload/<?php echo $rows['img']?>">
-                            <?php echo $rows['img'] ?> 
+                            <a href="upload/<?php echo $rows['img']?>">
+                                <img class="img_note" src="upload/<?php echo $rows['img']?>">
+                                <?php echo $rows['img'] ?> 
+                            </a>
                         </div>
                         <?php 
                             $title = $rows['title'];
+                            $im = $rows['img'];
                         echo '
                         
                         <div class="ope">
+                        <a class="btn uptit_btn" download="'.$im.'" href="upload/'.$im.'">Download
+                        </a>
                         <a class="btn uptit_btn" href="upnote.php?uptitle='.$title.'">Update</a>
-                        <a class="btn del_btn" href="delimg1.php?deltitle='.$title.'">Delete</a>
+                        <a class="btn del_btn" href="delimg.php?deltitle='.$title.'">Delete</a>
                         </div>
                         '
                         ?>

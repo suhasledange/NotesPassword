@@ -246,13 +246,26 @@
                 while($rows=mysqli_fetch_assoc($result)){
                 ?>    
                 <tr>
-                
                     <td class="title"> <?php echo  $rows['title'] ?> </td>
-                    <td> <?php echo $rows['pass'] ?> </td>
+                    <td class="note_cl"> 
+                        <div class="note_div">
+                            <?php echo $rows['pass']?> 
+                        </div>
+                        <?php 
+                            $title = $rows['title'];
+                        echo '
+                        <div class="ope">
+                         <a class="btn uptit_btn" href="updatepassblock.php?uptitle='.$title.'">Update</a> 
+                        <a class="btn del_btn" href="delpass.php?deltitle='.$title.'">Delete</a>
+                        </div>
+                        '
+                        ?>
+                    </td>
                 </tr>
              <?php   
             }
             ?>
+            </table>
             </table>
         </div>
         <div class="form-con">

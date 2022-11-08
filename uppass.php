@@ -4,19 +4,19 @@
 
     $con = mysqli_connect('localhost','root','');
 
-    mysqli_select_db($con,'Notes');
+    mysqli_select_db($con,'passwords');
 
     $title = $_POST['title'];
     $prev = $_POST['prev'];
-    $note = $_POST['note'];
+    $note = $_POST['pass'];
     
     $first = implode($_SESSION['first']);
     $last = implode($_SESSION['last']);
 
 
-    $s = "update $first$last set title='$title',note='$note' where title='$prev'";
+    $s = "update $first$last set title='$title',pass='$note' where title='$prev'";
     $res = mysqli_query($con,$s);
     
-    header('location:noteblock.php');
+    header('location:passblock.php');
     
 ?>
