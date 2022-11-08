@@ -2,10 +2,10 @@
 
     session_start();
     $con = mysqli_connect('localhost','root','');
-    mysqli_select_db($con,'manager');
     $first = implode($_SESSION['first']);
     $last = implode($_SESSION['last']);
-
+    
+    mysqli_select_db($con,'manager');
     $query = "select primg from registration where first='$first' && last='$last'";
     $res = mysqli_query($con,$query);
     $primg = mysqli_fetch_assoc($res);

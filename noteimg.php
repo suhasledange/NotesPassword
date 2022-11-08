@@ -2,13 +2,14 @@
 
     session_start();
     $con = mysqli_connect('localhost','root','');
-    mysqli_select_db($con,'noteimg');
-
+    
     $first = implode($_SESSION['first']);
     $last = implode($_SESSION['last']);
-
-    $query = "select * from $first$last";
-    $result = mysqli_query($con,$query);
+    
+    mysqli_select_db($con,'manager');
+    $query = "select primg from registration where first='$first' && last='$last'";
+    $res = mysqli_query($con,$query);
+    $primg = mysqli_fetch_assoc($res);
 
 ?>
 <html lang="en">
@@ -188,14 +189,14 @@
 
             <div class="last">
                 <div class="profile-logo" >
-                    <img src="profile-small.png" onclick="togfun()" alt="">
+                    <img class="proin" style="border-radius: 50%;" src="profile/<?php echo implode($primg) ?>" onclick="togfun()" alt="">
                 </div>
                 <div class="profile-contain">
                         <div class="profile-img">
                             <div class="pro-img">
-                                <img src="profile-small.png" alt="">
+                                <img class="proin" src="profile/<?php echo implode($primg) ?>" alt="">
                             </div>
-                            <h1><?php echo implode($_SESSION['first']) ?> <?php echo implode($_SESSION['last']) ?>  </h1>
+                            <h1><?php echo implode($_SESSION['first']) ?> <?php echo implode($_SESSION['last']) ?> </h1>
                             <span><?php echo implode($_SESSION['email']) ?> </span>
                             <a href="" class="accn">Manage Your Account</a>
                         </div>
@@ -206,7 +207,7 @@
                         </div>
                         <div class="sign-out">
                             <a href="logout.php">Sign out</a>
-                        </div> 
+                        </div>
                         <div class="policy">
                             <a href="">Privacy Policy</a>
                             <span><i class="uil uil-bright"></i></span>
@@ -214,11 +215,9 @@
                         </div> 
                 </div>
             </div>
-
-
-
         </div>
     </nav>
+
 
     <section class="container_data">
         
@@ -246,6 +245,12 @@
                     <th colspan="2">Note</th>
                 </tr>
                 <?php
+
+                    mysqli_select_db($con,'noteimg');
+                    $query = "select * from $first$last";
+                    $result = mysqli_query($con,$query);
+
+
                 while($rows=mysqli_fetch_assoc($result)){
                 ?>    
                 <tr>
