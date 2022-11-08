@@ -10,7 +10,6 @@
     $res = mysqli_query($con,$query);
     $primg = mysqli_fetch_assoc($res);
 ?>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -193,7 +192,7 @@
                 <div class="profile-contain">
                         <div class="profile-img">
                             <div class="pro-img">
-                                <img class="proin" src="profile/<?php echo implode($primg) ?>" alt="">
+                                <img class="proin" src="profile/<?php echo implode($primg)?>" alt="">
                             </div>
                             <h1><?php echo implode($_SESSION['first']) ?> <?php echo implode($_SESSION['last']) ?> </h1>
                             <span><?php echo implode($_SESSION['email']) ?> </span>
@@ -219,28 +218,44 @@
 
     <?php 
 
-            $query = "select * from registration";
+    $query = "select * from registration where first='$first' && last='$last'";
+    $qu = "select id from registration where first='$first' && last='$last'";
             $res = mysqli_query($con,$query);
             $rows = mysqli_fetch_assoc($res);
-
+            $qur = mysqli_query($con,$qu);
+            $i = mysqli_fetch_assoc($qur);
+            $id = implode($i);
     ?>
 
     <section class="manager-contain">
-        <div class="manage-container ">
+        <div class="manage-container snake-border">
         
-        <form class="form-cont snake-border" action="">
-        <div class="left-acc">
-            <button class="up_btn">Change Profile Pic</button>
-            <input hidden type="file" class="up_btn">
-            <img src="profile/<?php echo $rows['primg']?>" alt="">
+        <form class="form-cont " action="updateAcc.php" method="post" enctype="multipart/form-data">
+        <div class="left-acc" onclick="document.getElementById('profile_btn').click()">
+            <input hidden type="file" id="profile_btn" name="profile_img">
+            <h1 class="up_btn">Change Profile Pic</h1>
+            <input hidden type="text" name="id" value="<?php echo $id?>">
+            <img src="profile/<?php echo implode($primg)?> " alt="">
         </div>
-        <div class="right-acc form-con">   
-        <input type="text" name="first" value="<?php echo $rows['first']?>">
+        <div class="right-acc form-con"> 
+        <div class="lab">
+            <label for="">First Name : </label>
+            <input type="text" name="first" value="<?php echo $rows['first']?>">
+        </div>  
+        <div class="lab">
+        <label for="">Last Name : </label>
         <input type="text" name="last" value="<?php echo $rows['last']?>">
+        </div>  
+        <div class="lab">
+        <label for="">Email : </label>
         <input type="text" name="email" value="<?php echo $rows['email']?>">
+        </div>  
+        <div class="lab">
+        <label for="">Password : </label>
         <input type="text" name="pass" value="<?php echo $rows['password']?>">
         </div>
-                        
+        <button class="upda_btn" type="submit" name="updatesubmit">Update</button>
+    </div>
         </form>
 
         </div>

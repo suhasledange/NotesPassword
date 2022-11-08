@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="login.css">
 </head>
 <body>
-
     <nav>
         <div class="menu-icon" >
             <i class="uil uil-bars" onclick="settingToggle()"></i>

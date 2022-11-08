@@ -20,7 +20,7 @@
         header('location:signup.php');
     }
     else{
-            $reg = "insert into registration(primg,first,last,email,password) values('profile-small.png','$first','$last','$email','$password')";
+            $reg = "insert into registration(id,primg,first,last,email,password) values(null,'profile-small.png','$first','$last','$email','$password')";
             mysqli_query($con,$reg);
             
             mysqli_select_db($con,'Notes');

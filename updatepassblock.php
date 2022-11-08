@@ -197,7 +197,7 @@ $last = implode($_SESSION['last']);
                             </div>
                             <h1><?php echo implode($_SESSION['first']) ?> <?php echo implode($_SESSION['last']) ?> </h1>
                             <span><?php echo implode($_SESSION['email']) ?> </span>
-                            <a href="" class="accn">Manage Your Account</a>
+                            <a href="manageAcc.php" class="accn">Manage Your Account</a>
                         </div>
                         <div class="add-accn">
                              <a href="noteblock.php">Notes</a>
