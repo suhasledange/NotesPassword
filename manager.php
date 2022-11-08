@@ -1,7 +1,14 @@
 <?php
 
     session_start();
+    $con = mysqli_connect('localhost','root','');
+    mysqli_select_db($con,'manager');
+    $first = implode($_SESSION['first']);
+    $last = implode($_SESSION['last']);
 
+    $query = "select primg from registration where first='$first' && last='$last'";
+    $res = mysqli_query($con,$query);
+    $primg = mysqli_fetch_assoc($res);
 ?>
 
 <html lang="en">
@@ -179,14 +186,13 @@
                 </ul>
             </div>
             <div class="last">
-        
                 <div class="profile-logo" >
-                    <img src="profile-small.png" onclick="togfun()" alt="">
+                    <img class="proin" style="border-radius: 50%;" src="profile/<?php echo implode($primg) ?>" onclick="togfun()" alt="">
                 </div>
                 <div class="profile-contain">
                         <div class="profile-img">
                             <div class="pro-img">
-                                <img src="profile-small.png" alt="">
+                                <img class="proin" src="profile/<?php echo implode($primg) ?>" alt="">
                             </div>
                             <h1><?php echo implode($_SESSION['first']) ?> <?php echo implode($_SESSION['last']) ?> </h1>
                             <span><?php echo implode($_SESSION['email']) ?> </span>

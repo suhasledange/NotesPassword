@@ -5,7 +5,7 @@
     $con = mysqli_connect('localhost','root','');
 
     mysqli_select_db($con,'manager');
-
+    
     $first = $_POST['first'];
     $last = $_POST['last'];
     $email = $_POST['email'];
@@ -20,7 +20,7 @@
         header('location:signup.php');
     }
     else{
-            $reg = "insert into registration(first,last,email,password) values('$first','$last','$email','$password')";
+            $reg = "insert into registration(primg,first,last,email,password) values('profile-small.png','$first','$last','$email','$password')";
             mysqli_query($con,$reg);
             
             mysqli_select_db($con,'Notes');

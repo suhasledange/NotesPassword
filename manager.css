@@ -12,16 +12,21 @@
 }
 
 
-.profile-logo img{
-    width: 2.5rem;
-    cursor: pointer;
-    margin: 0.1rem auto;
-}
 .profile-logo{
     margin-right: -3rem;
     border: 2px solid var(--color-bg3);
     border-radius: 50%;
     height: 3rem;
+    position: relative;
+}
+.profile-logo .proin{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
 }
 .profile-logo:hover{
     border-color: var(--color-bg2);
@@ -59,13 +64,20 @@
     cursor: pointer;
     width: 4rem;
     height: 4rem;
+    position: relative;
 }
 .pro-img:hover{
     border-color: var(--color-bg2);
 }
-.pro-img img{
-    margin: 0.1rem auto;
-    width: 3.5rem;
+.pro-img .proin{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    border-radius: 50%;
 }
 .profile-img .accn{
     margin-top: 1rem;

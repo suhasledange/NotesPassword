@@ -188,8 +188,7 @@
             <div class="right">
                 <h1>Sign Up</h1>
                 <div class="inp">
-                    <form action="register.php" method="post">
-                        
+                    <form action="register.php" method="post" enctype="multipart/form-data">
                             <input type="text" name="first" placeholder="First Name" required>
                             <input type="text" name="last" placeholder="Last Name" required>
                             <input type="email" name="email" id="" placeholder="Email" required>
