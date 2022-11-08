@@ -9,7 +9,6 @@
 
     $query = "select * from $first$last";
     $result = mysqli_query($con,$query);
-
 ?>
 <html lang="en">
 <head>
@@ -185,7 +184,6 @@
                 </ul>
             </div>
 
-
             <div class="last">
                 <div class="profile-logo" >
                     <img src="profile-small.png" onclick="togfun()" alt="">
@@ -262,11 +260,12 @@
                         echo '
 
                         <div class="ope">
-                        <a class="btn uptit_btn" href="upnote.php?uptitle='.$title.'">Update</a>
+                         <a class="btn uptit_btn" href="upnote.php?uptitle='.$title.'">Update</a> 
                         <a class="btn del_btn" href="delnote.php?deltitle='.$title.'">Delete</a>
                         </div>
                         '
                         ?>
+                        
                     </td>
                 </tr>
              <?php   
@@ -274,8 +273,6 @@
             ?>
             </table>
              
-
-
         </div>
         <div class="form-con">
             <i class="cross uil uil-times"></i>

@@ -12,7 +12,7 @@
     $last = implode($_SESSION['last']);
 
     
-    $reg = "delete from imgnote where title='$title'";
+    $reg = "delete from $first$last where title='$title'";
     mysqli_query($con,$reg);    
     
     header('location:noteimg.php');

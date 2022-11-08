@@ -19,6 +19,9 @@ nav .container .last{
     overflow: scroll;
 
 }
+.hide_inp{
+    display: none;
+}
 table{
     margin-top: 1rem;
     padding: 1rem;
@@ -55,10 +58,11 @@ table tr th,td{
     color: var(--color-white);
     border: 1px solid var(--color-white);
     background: transparent;
-}
+} 
 .uptit_btn{
     color: var(--color-bg1);
     background: var(--color-bg2);
+    cursor: pointer;
 }
 .del_btn:hover{
     background: var(--color-danger);

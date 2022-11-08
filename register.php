@@ -31,6 +31,10 @@
             $qe = "CREATE TABLE $first$last(title VARCHAR(225) NOT NULL , pass VARCHAR(255) NOT NULL , PRIMARY KEY (title))";
             mysqli_query($con,$qe);
             
+            mysqli_select_db($con,'noteimg');
+            $qe = "CREATE TABLE $first$last(title VARCHAR(225) NOT NULL , img VARCHAR(255) NOT NULL , PRIMARY KEY (title))";
+            mysqli_query($con,$qe);
+
             header('location:login.php');
 
         }

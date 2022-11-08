@@ -7,7 +7,7 @@
     $first = implode($_SESSION['first']);
     $last = implode($_SESSION['last']);
 
-    $query = "select * from imgnote";
+    $query = "select * from $first$last";
     $result = mysqli_query($con,$query);
 
 ?>
@@ -261,7 +261,7 @@
                         
                         <div class="ope">
                         <a class="btn uptit_btn" href="upnote.php?uptitle='.$title.'">Update</a>
-                        <a class="btn del_btn" href="delnote.php?deltitle='.$title.'">Delete</a>
+                        <a class="btn del_btn" href="delimg1.php?deltitle='.$title.'">Delete</a>
                         </div>
                         '
                         ?>
