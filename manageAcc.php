@@ -2,18 +2,15 @@
 
     session_start();
     $con = mysqli_connect('localhost','root','');
-    
     $first = implode($_SESSION['first']);
     $last = implode($_SESSION['last']);
-    
     
     mysqli_select_db($con,'manager');
     $query = "select primg from registration where first='$first' && last='$last'";
     $res = mysqli_query($con,$query);
     $primg = mysqli_fetch_assoc($res);
-
-
 ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,11 +27,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="manager.css">
-<link rel="stylesheet" href="noteblock.css">
-
+<link rel="stylesheet" href="ACC.css">
     
 </head>
-<body> 
+<body>
+    
+     
     <nav>
         <div class="menu-icon" >
             <i class="uil uil-bars" onclick="settingToggle()"></i>
@@ -184,12 +182,10 @@
 
                     </li>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="login.html">Log In</a></li>
-                    <li><a href="signup.html">Sign Up</a></li>
+                    <li><a href="login.php">Log In</a></li>
+                    <li><a href="signup.php">Sign Up</a></li>
                 </ul>
             </div>
-
-
             <div class="last">
                 <div class="profile-logo" >
                     <img class="proin" style="border-radius: 50%;" src="profile/<?php echo implode($primg) ?>" onclick="togfun()" alt="">
@@ -220,72 +216,35 @@
             </div>
         </div>
     </nav>
-    <section class="container_data">
+
+    <?php 
+
+            $query = "select * from registration";
+            $res = mysqli_query($con,$query);
+            $rows = mysqli_fetch_assoc($res);
+
+    ?>
+
+    <section class="manager-contain">
+        <div class="manage-container ">
         
-        <div class="data snake-border">
-            <div class="options">
-
-                <div class="addnote">
-                    <i class="uil uil-plus"></i>
-                    <h1>Add Password</h1>
-                </div>
-                <div class="deletenote">
-                    <i class="uil uil-minus"></i>
-                    <h1>Delete Password</h1>
-                </div>
-            </div>
-            <table>
-                <tr>
-                    <th class="title">Title</th>
-                    <th>Password</th>
-                </tr>
-                <?php
-
-                    mysqli_select_db($con,'Passwords');
-                    $query = "select * from $first$last";
-                    $result = mysqli_query($con,$query);
-
-                while($rows=mysqli_fetch_assoc($result)){
-                ?>    
-                <tr>
-                    <td class="title"> <?php echo  $rows['title'] ?> </td>
-                    <td class="note_cl"> 
-                        <div class="note_div">
-                            <?php echo $rows['pass']?> 
-                        </div>
-                        <?php 
-                            $title = $rows['title'];
-                        echo '
-                        <div class="ope">
-                         <a class="btn uptit_btn" href="updatepassblock.php?uptitle='.$title.'">Update</a> 
-                        <a class="btn del_btn" href="delpass.php?deltitle='.$title.'">Delete</a>
-                        </div>
-                        '
-                        ?>
-                    </td>
-                </tr>
-             <?php   
-            }
-            ?>
-            </table>
-            </table>
+        <form class="form-cont snake-border" action="">
+        <div class="left-acc">
+            <button class="up_btn">Change Profile Pic</button>
+            <input hidden type="file" class="up_btn">
+            <img src="profile/<?php echo $rows['primg']?>" alt="">
         </div>
-        <div class="form-con">
-            <i class="cross uil uil-times"></i>
-            <form action="addpass.php" method="post">
-                <input type="text" name="title" placeholder="Enter Title" required>
-                <textarea name="pass" cols="10" rows="10" placeholder="Enter Password" required></textarea>
-                <input class="btn" type="submit" >                
-            </form>
+        <div class="right-acc form-con">   
+        <input type="text" name="first" value="<?php echo $rows['first']?>">
+        <input type="text" name="last" value="<?php echo $rows['last']?>">
+        <input type="text" name="email" value="<?php echo $rows['email']?>">
+        <input type="text" name="pass" value="<?php echo $rows['password']?>">
         </div>
-        <div class="form-con1">
-            <i class="cross1 uil uil-times"></i>
-            <form action="deletepass.php" method="post">
-                <input type="text" name="title" placeholder="Enter Title To Delete" required>
-                <button class="btn" type="submit" placeholder="Delete">Delete</button>                
-            </form>
+                        
+        </form>
+
         </div>
-    </section>
+        </section>
 
     
         <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
