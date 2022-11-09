@@ -10,6 +10,7 @@
     $query = "select primg from registration where first='$first' && last='$last'";
     $res = mysqli_query($con,$query);
     $primg = mysqli_fetch_assoc($res);
+    
 ?>
 <html lang="en">
 <head>
